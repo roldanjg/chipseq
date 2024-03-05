@@ -27,7 +27,7 @@ params.gff           = WorkflowMain.getGenomeAttribute(params, 'gff')
 params.gene_bed      = WorkflowMain.getGenomeAttribute(params, 'gene_bed')
 params.blacklist     = WorkflowMain.getGenomeAttribute(params, 'blacklist')
 params.macs_gsize    = WorkflowMain.getMacsGsize(params)
-
+params.chrm_fasta_files    = WorkflowMain.getGenomeAttribute(params, 'chrm_fasta_files')
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     VALIDATE & PRINT PARAMETER SUMMARY
