@@ -130,6 +130,15 @@
                     "fa_icon": "fas fa-bezier-curve",
                     "description": "Path to directory or tar.gz archive for pre-built STAR index."
                 },
+                "chrm_fasta_files": {
+                    "type": "string",
+                    "format": "folder-path",
+                    "exists": true,
+                    "mimetype": "text/plain",
+                    "pattern": "^\\S+/$",
+                    "fa_icon": "fas fa-procedures",
+                    "description": "Path to a folder with fasta files divided by chromosomes. In the future, this will be created from the fasta file if not specified ."
+                },
                 "gene_bed": {
                     "type": "string",
                     "format": "file-path",

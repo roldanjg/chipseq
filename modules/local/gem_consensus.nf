@@ -39,7 +39,7 @@ process GEM_CONSENSUS {
 
     macs2_merged_expand.py \\
         ${prefix}.txt \\
-        ${peaks.collect{it.toString()}.sort().join(',').replaceAll("_events.${peak_type}","")} \\
+        ${peaks.collect{it.toString()}.sort().join(',').replaceAll(".GEM_events.${peak_type}","")} \\
         ${prefix}.boolean.txt \\
         --min_replicates $params.min_reps_consensus \\
         $args \\

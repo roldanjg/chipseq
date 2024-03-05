@@ -519,7 +519,9 @@ workflow CHIPSEQ {
     //
     GEM_CALLPEAK (
         ch_ip_control_bam,
-        ch_macs_gsize
+        ch_macs_gsize,
+        PREPARE_GENOME.out.chrom_sizes,
+        PREPARE_GENOME.out.chrm_fasta_files
     )
     ch_versions = ch_versions.mix(GEM_CALLPEAK.out.versions.first())
     //

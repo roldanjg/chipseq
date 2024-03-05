@@ -6,11 +6,15 @@ process GEM_CALLPEAK {
     input:
     tuple val(meta), path(ipbam), path(controlbam)
     val   macs2_gsize
+    path sizes
+    path chrms
 
     output:
     tuple val(meta), path("*.GEM_events.narrowPeak"), emit: peak
     tuple val(meta), path("*results.htm")           , emit: gemhtml
     tuple val(meta), path("*_outputs")           , emit: gemfolder
+    tuple val(meta), path("*.GEM_events.txt")           , emit: events
+
 
     path  "versions.yml"                             , emit: versions
 
@@ -33,7 +37,7 @@ process GEM_CALLPEAK {
     """
     java -jar /home/joaquin/projects/methylation/programs/gem/gem.jar \\
             --d /home/joaquin/projects/methylation/programs/gem/Read_Distribution_default.txt \\
-                 --g /home/joaquin/projects/methylation/data/commonData/arabidopsisThaliana/genome.index.txt --genome /home/joaquin/projects/methylation/data/commonData/arabidopsisThaliana/Athchrs/ \\
+                 --g $sizes --genome $chrms \\
                  --s $macs2_gsize \\
                  --expt $ipbam --ctrl $controlbam\\
                  --out $prefix --f SAM --outNP --range 200 \\

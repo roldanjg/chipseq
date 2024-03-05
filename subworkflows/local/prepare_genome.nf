@@ -127,6 +127,17 @@ workflow PREPARE_GENOME {
 
 
     //
+    // Get the genome folder with fasta files splited by chromosome for GEM
+    //
+    if (params.chrm_fasta_files) {
+
+        chrms_files_gem = params.chrm_fasta_files
+
+        } else {
+            // TODO generate automatically the folder from the genome.fa.
+        }
+
+    //
     // Uncompress BWA index or generate from scratch if required
     //
     ch_bwa_index = Channel.empty()
@@ -199,16 +210,16 @@ workflow PREPARE_GENOME {
     }
 
     emit:
-    fasta         = ch_fasta                  //    path: genome.fasta
-    fai           = ch_fai                    //    path: genome.fai
-    gtf           = ch_gtf                    //    path: genome.gtf
-    gene_bed      = ch_gene_bed               //    path: gene.bed
-    chrom_sizes   = ch_chrom_sizes            //    path: genome.sizes
-    filtered_bed  = ch_genome_filtered_bed    //    path: *.include_regions.bed
-    bwa_index     = ch_bwa_index              //    path: bwa/index/
-    bowtie2_index = ch_bowtie2_index          //    path: bowtie2/index/
-    chromap_index = ch_chromap_index          //    path: genome.index
-    star_index    = ch_star_index             //    path: star/index/
-
-    versions    = ch_versions.ifEmpty(null) // channel: [ versions.yml ]
+    fasta            = ch_fasta                  //    path: genome.fasta
+    fai              = ch_fai                    //    path: genome.fai
+    gtf              = ch_gtf                    //    path: genome.gtf
+    gene_bed         = ch_gene_bed               //    path: gene.bed
+    chrom_sizes      = ch_chrom_sizes            //    path: genome.sizes
+    filtered_bed     = ch_genome_filtered_bed    //    path: *.include_regions.bed
+    bwa_index        = ch_bwa_index              //    path: bwa/index/
+    bowtie2_index    = ch_bowtie2_index          //    path: bowtie2/index/
+    chromap_index    = ch_chromap_index          //    path: genome.index
+    star_index       = ch_star_index             //    path: star/index/
+    chrm_fasta_files = chrms_files_gem           //    path: gem/index/
+    versions         = ch_versions.ifEmpty(null) // channel: [ versions.yml ]
 }
